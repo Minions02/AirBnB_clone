@@ -1,31 +1,25 @@
 #!/usr/bin/python3
 """
-Tests for the State Model
+Test file for user class
 """
 
-
 import unittest
-import datetime
-
 from models.state import State
+from models.base_model import BaseModel
 
 
-class TestState(unittest.TestCase):
-    """Test cases for the State model"""
+class TestClass(unittest.TestCase):
+    """Test cases"""
 
-    def setUp(self):
-        """Create a few instances for testing"""
-        self.s1 = State()
+    def test_create_istance(self):
+        """create a new instance"""
+        new_state = State()
+        self.assertIsInstance(new_state, State)
 
-    def test_instances(self):
-        """Test if instances are created"""
-        self.assertTrue(isinstance(self.s1, State))
-
-    def test_name(self):
-        """Test the name attribute"""
-        self.assertNotEqual(self.s1.name, None)
-        self.assertEqual(type(self.s1.name), str)
-        self.assertEqual(self.s1.name, "")
+    def test_create_istance2(self):
+        """create a new instance"""
+        new_state = State()
+        self.assertIsInstance(new_state, BaseModel)
 
 
 if __name__ == '__main__':

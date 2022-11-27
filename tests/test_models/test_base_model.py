@@ -1,90 +1,86 @@
 #!/usr/bin/python3
 """
-Tests for the BaseModel
+Test file for the base_mode class
 """
 
-
 import unittest
-import datetime
-
-# from AirBnB_clone import models
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+import models
+import json
+import os
 
 
-class TestBaseModel(unittest.TestCase):
-    """Contains the actual tests"""
-
+class TestClass(unittest.TestCase):
+    """Test cases"""
     def setUp(self):
-        '''Set up the base by creating an instance of the BaseModel'''
-        self.base_model = BaseModel()
-        self.base_model1 = BaseModel()
+        self.model = BaseModel()
+        return super().setUp()
 
     def tearDown(self):
-        """Delete instances"""
-        del self.base_model
-        del self.base_model1
+        del(self.model)
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+        models.storage.reset()
+        return super().tearDown()
 
-    def test_instances(self):
-        """Tests if the instances are created"""
-        self.assertIsInstance(self.base_model, BaseModel)
-        self.assertIsInstance(self.base_model1, BaseModel)
+    def test_create_istance(self):
+        """ Test case init instance"""
+        self.assertIsInstance(self.model, BaseModel)
 
-    def test_uuid(self):
-        """Testing the uuid
-        1. if an instance is created
-        2. if instance has an id attribute
-        3. if id created in each instance is unique
-        """
-        self.assertTrue(hasattr(self.base_model, "id"))
-        self.assertTrue(hasattr(self.base_model1, "id"))
-        self.assertNotEqual(self.base_model.id, self.base_model1.id)
+    def test_save(self):
+        self.model.save()
 
-    def test_datetime(self):
-        """Test the created_at and update_at attributes:
-        0. both should be dates
-        1. To be equal when instance is created
-        2. Should not be equal when save() method is called
-        3. test if instances have both attributes
-        4. compare to see if both attributes are equal(shouldn't)
-        5. create a new instance and check if datetime is almost equal to now
-        """
-        self.assertTrue(hasattr(self.base_model, "created_at"))
-        self.assertTrue(hasattr(self.base_model, "updated_at"))
+        file = 'file.json'
+        with open(file, mode="r+", encoding="utf-8") as f:
+            file_string = f.read()
+            data = json.loads(file_string)
 
-        datenow = datetime.datetime.now()
-        self.testmodel = BaseModel()
-        self.assertNotEqual(self.testmodel.created_at, datenow)
-        self.assertNotEqual(self.testmodel.created_at,
-                            self.testmodel.updated_at)
-        self.testmodel.save()
-        self.assertNotEqual(self.testmodel.created_at,
-                            self.testmodel.updated_at)
+        self.assertTrue(
+                '{}.{}'.format(type(self.model).__name__, self.model.id) in data
+            )
 
-    def test_str(self):
-        """Tests the __str__ method
-        The expected output should be in the format:
-        [<class name>] (<self.id>) <self.__dict__>
-        """
+        self.assertDictEqual(
+            self.model.to_dict(),
+            data['{}.{}'.format(type(self.model).__name__, self.model.id)]
+            )
 
-    def test_todict(self):
-        """Tests the to_dict() method:
-        1. By using self.__dict__: return only instance attributes
-        2. a __class__ key should be added to the dictionary
-        3. the datetime(created_at and updated_at should be strings
-            format -> %Y-%m-%dT%H:%M:%S.%f
-        """
-        model_dict = self.base_model.to_dict()
-        self.assertTrue(type(model_dict), dict)
-        for key in model_dict:
-            # check if the keys contain strings
-            self.assertTrue(type(key), str)
-            self.assertNotEqual(key, None)  # check if the keys are empty
+    def test_assign_attribute(self):
+        """ Test new attribute"""
+        self.model.name = "Holberton"
+        self.model.my_number = 89
+        self.assertIs(self.model.name, "Holberton")
+        self.assertIs(self.model.my_number, 89)
 
-    # def tearDown(self):
-    #     """Disposes the instances of the class created"""
-    #     self.base_model.dispose()
-    #     self.base_model1.dispose()
-    #     self.testmodel.dispose()
+    def test_create_instance_from_dict(self):
+        """create an instance using dictionary"""
+        model_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337',
+                      'created_at': '2017-09-28T21:03:54.052298',
+                      '__class__': 'BaseModel', 'my_number': 89,
+                      'updated_at': '2017-09-28T21:03:54.052302',
+                      'name': 'Holberton'}
+
+        my_model = BaseModel(**model_dict)
+        self.assertIsInstance(my_model, BaseModel)
+        self.assertEqual(my_model.id,
+                         "56d43177-cc5f-4d6c-a0c1-e167f8c27337")
+        self.assertEqual(my_model.name, "Holberton")
+
+    def test_to_dict_success(self):
+
+        self.model.name = "Holberton"
+        self.model.my_number = 89
+        my_model_json = self.model.to_dict()
+
+        self.assertDictEqual(my_model_json, {
+            'id': self.model.id,
+            'created_at': self.model.created_at.strftime(
+                '%Y-%m-%dT%H:%M:%S.%f'),
+            'updated_at': self.model.updated_at.strftime(
+                '%Y-%m-%dT%H:%M:%S.%f'),
+            'name': self.model.name,
+            'my_number': self.model.my_number,
+            '__class__': BaseModel.__name__})
 
 
 if __name__ == '__main__':

@@ -1,43 +1,40 @@
 #!/usr/bin/python3
 """
-Tests for the City model
+Test file for city class
 """
 
-
 import unittest
-import datetime
-
 from models.city import City
-from models.state import State
+from models.base_model import BaseModel
 
 
-class TestCity(unittest.TestCase):
-    """Test the city model"""
+class TestClass(unittest.TestCase):
+    """Test cases"""
 
     def setUp(self):
-        """Instances for testing"""
-        self.c1 = City()
-        self.c2 = City()
+        self.city = City()
+        return super().setUp()
 
-    def test_instances(self):
-        """Check the instances and presence of attributes"""
-        self.assertIsInstance(self.c1, City)
-        self.assertIsInstance(self.c2, City)
-        self.assertTrue(hasattr(self.c1, "name"))
-        self.assertTrue(hasattr(self.c1, "state_id"))
+    def tearDown(self):
+        del(self.city)
+        return super().tearDown()
 
-    def test_name(self):
-        """Test the name attribute"""
-        self.assertEqual(type(self.c1.name), str)
-        self.assertEqual(self.c1.name, "")
-        self.assertNotEqual(self.c1.name, None)
+    def test_create_istance(self):
+        """create a new instance"""
+        self.assertIsInstance(self.city, City)
 
-    def test_state_id(self):
-        """Test the state_id attribute"""
-        self.assertNotEqual(self.c1.state_id, None)
-        self.assertEqual(type(self.c1.state_id), str)
-        # self.assertEqual(self.c1.state_id, State.id)
-        self.assertEqual(self.c1.state_id, "")
+    def test_create_istance_check_parent(self):
+        """check if it's instance of parent"""
+        self.assertIsInstance(self.city, BaseModel)
+
+    def test_class_attribut(self):
+        """initialze class attribute"""
+        self.city.name = "kigali"
+        self.assertIs(self.city.name, 'kigali')
+
+    def test_parent_of_city(self):
+        """check if city is parent of BaseModel"""
+        self.assertEqual(isinstance(self.city, BaseModel), True)
 
 
 if __name__ == '__main__':

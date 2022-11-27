@@ -1,149 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link href="styles/4-common.css" rel="stylesheet">
-    <link href="styles/3-header.css" rel="stylesheet">
-    <link href="styles/3-footer.css" rel="stylesheet">
-    <link href="styles/6-filters.css" rel="stylesheet">
-    <link href="styles/8-places.css" rel="stylesheet">
-    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon"/>
-    <meta charset="utf-8">
-    <title>AirBnB clone</title>
-  </head>
-  <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/4-common.css">
+    <link rel="stylesheet" href="styles/3-header.css">
+    <link rel="stylesheet" href="styles/3-footer.css">
+    <link rel="stylesheet" href="styles/4-filters.css">
+    <link rel="shortcut icon" type="image/jpg" href="images/icon.png"/>
+</head>
+
+<body>
     <header>
-        <div>
-            <div class="logo"></div>
-        </div>
+        <div class="logo"></div>
     </header>
-    <div class="container">
-      <section class="filters">
+    <section class="filters">
         <div class="locations">
-          <h3>States</h3>
-          <h4>California, Arizona...</h4>
-          <ul class="popover">
-            <li>
-              <h2>Arizona:</h2>
-              <ul>  
-                <li>Page</li>
-                <li>Page2</li>
-              </ul>
-            </li>
-            <li>
-              <h2>California:</h2>
-              <ul>
-                <li>San Francisco</li>
-                <li>Los Altos</li>
-              </ul>
-            </li>
-          </ul>
+            <h3>States</h3>
+            <h4>California, Arizona...</h4>
+            <ul class="popover">
+                <li>
+                    <h2>Arizona:</h2>
+                    <ul>
+                        <li>Page</li>
+                        <li>Page2</li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>California:</h2>
+                    <ul>
+                        <li>San Francisco</li>
+                        <li>Los Altos</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div class="amenities">
-          <h3>Amenities</h3>
-          <h4>Internet, Kitchen...</h4>
-          <ul class="popover">
-            <li>Internet</li>
-            <li>TV</li>
-            <li>Kitchen</li>
-            <li>Iron</li>
-          </ul>
+            <h3>Amenities</h3>
+            <h4>Internet, Kitchen...</h4>
+            <ul class="popover">
+                <li>Internet</li>
+                <li>TV</li>
+                <li>Kitchen</li>
+                <li>Iron</li>
+            </ul>
         </div>
-        <button>Search</button>
-      </section>
-      <section class="places">
+        <button type="button">Search</button>
+    </section>
+    <section class="places">
         <h1>Places</h1>
-        <div class="places-container">
-          <article>
-            <div class="title">
-              <h2>My home</h2>
-              <div class="price_by_night">$80</div>
+        <article>
+            <h2>My home</h2>
+            <div class="price_by_night">
+                $80
             </div>
             <div class="information">
-              <div class="max_guest">
-                <div class="logo"></div>
-                <span>2 Guests</span>
-              </div>
-              <div class="number_rooms">
-                <div class="logo"></div>
-                <span>1 Bedroom</span>
-              </div>
-              <div class="number_bathrooms">
-                <div class="logo"></div>
-                <span>1 Bathroom</span>
-              </div>
+                <div class="max_guest">
+                    <p>2 Gests</p>
+                </div>
+                <div class="number_rooms">
+                    <p>1 Bedroom</p>
+                </div>
+                <div class="number_bathrooms">
+                    <p>1 Bathroom</p>
+                </div>
             </div>
-            <div class="user"><b>Owner</b>: John Kamau</div>
+            <div class="user">
+                <strong>Owner:</strong>Julian Villegas
+            </div>
             <div class="description">
-            This is a lovely 1 bedroom and 1 bathroom apartment that can
-            accomodate 2 people. It locates at the center of Shanghai and
-            next to subway line 1, 1 stop to People Square, 2 stops to Bund,
-            3 stops to Jingan Temple.
+                <p>Spectacular apartment with 1 bedroom, 1 bathrooms. Capacity for 2 people. Located in
+                the exclusive sector of the Northern Zone of Cartagena. Building with 3 swimming pools,
+                jacuzzi, Turkish bath, gym and direct access to the beach. By regulation the building does
+                not allow guests to have visitors. Only registered guests must enter prior to arrival.</p>
             </div>
-          </article>
-          <article>
-            <div class="title">
-              <h2>Tiny house</h2>
-              <div class="price_by_night">$65</div>
+        </article>
+        <article>
+            <h2>Tiny house</h2>
+            <div class="price_by_night">
+                $65
             </div>
             <div class="information">
-              <div class="max_guest">
-                <div class="logo"></div>
-                <span>4 Guests</span>
-              </div>
-              <div class="number_rooms">
-                <div class="logo"></div>
-                <span>2 Bedrooms</span>
-              </div>
-              <div class="number_bathrooms">
-                <div class="logo"></div>
-                <span>1 Bathroom</span>
-              </div>
+                <div class="max_guest">
+                    <p>4 Gests</p>
+                </div>
+                <div class="number_rooms">
+                    <p>2 Bedrooms</p>
+                </div>
+                <div class="number_bathrooms">
+                    <p>1 Bathroom</p>
+                </div>
             </div>
-            <div class="user"><b>Owner</b>: John Njung'e</div>
+            <div class="user">
+                <strong>Owner:</strong>Yuliana Osorio
+            </div>
             <div class="description">
-            Our place is a private, affordable stand-alone guest house
-            centrally located just minutes to French Quarters, downtown,
-            the Fair Grounds(Jazz Fest)and City Park. The guest house is
-            a quaint, 400 square ft. with a full bath, mini kitchen, &amp;
-            living room. The extra high ceilings make the home feel more
-            spacious. The sofa converts to a bed also. We have a hand made
-            counter area that adds character to the room and a great
-            porch/deck to relax on and have a glass of Merlot.
-
+                <p>Comfortable and pleasant private suite to spend the night, has private bathroom, wardrobe to
+                store your clothes, desk, TV. Wifi, is very well located near Six Flags, universities (UNAM)
+                Perisur Shopping Center, Tlalpan Forest, Colmex, FLACSO, Fondo de Cultura Econimica, Pemex
+                Hospital, Angeles Hospital, Chedraui and much more.</p>
             </div>
-          </article>
-          <article>
-            <div class="title">
-              <h2>A suite</h2>
-              <div class="price_by_night">$190</div>
+        </article>
+        <article>
+            <h2>A suite</h2>
+            <div class="price_by_night">
+                $190
             </div>
             <div class="information">
-              <div class="max_guest">
-                <div class="logo"></div>
-                <span>8 Guests</span>
-              </div>
-              <div class="number_rooms">
-                <div class="logo"></div>
-                <span>4 Bedrooms</span>
-              </div>
-              <div class="number_bathrooms">
-                <div class="logo"></div>
-                <span>2 Bathrooms</span>
-              </div>
+                <div class="max_guest">
+                    <p>6 Gests</p>
+                </div>
+                <div class="number_rooms">
+                    <p>4 Bedrooms</p>
+                </div>
+                <div class="number_bathrooms">
+                    <p>3 Bathrooms</p>
+                </div>
             </div>
-            <div class="user"><b>Owner</b>: Alphonce Kiprono</div>
+            <div class="user">
+                <strong>Owner:</strong>Esperanza Araque
+            </div>
             <div class="description">
-            This is an amazing house, a mansion really, located just
-            on the beach. Have a nice night with friends and then run
-            it off in the morning by the surf. It really doesn't get
-            much better than this.
+                <p>Spectacular apartment located in the exclusive sector of Morros, with privileged access to
+                the beaches of La Boquilla, swimming pool, gym, Turkish bath; It has two bedrooms, living room,
+                3 bathrooms, kitchen, equipped with air conditioners, hot water, refrigerator, stove, washer,
+                dryer, Wi Fi internet, balcony in the room with beautiful sea view. It is the perfect space
+                for a family break by the sea.</p>
             </div>
-          </article>
-        </div>
-      </section>
-    </div>
+        </article>
+    </section>
+</div>
     <footer>
-      <div>Best School</div>
+        <p>Holberton School</p>
     </footer>
-  </body>
+</body>
+
 </html>
